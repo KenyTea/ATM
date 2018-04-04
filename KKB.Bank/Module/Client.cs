@@ -28,7 +28,7 @@ namespace KKB.Bank.Module
                 FullName_ = value
                     .Replace("<center><b><font size=7>", "")
                     .Replace("</font></b></center>", "");
-                   
+
 
             }
         }
@@ -47,7 +47,7 @@ namespace KKB.Bank.Module
                 }
                 else
                 {
-                    
+
                     throw new Exception("Некорректно введён ИИН");
                 }
             }
@@ -69,12 +69,12 @@ namespace KKB.Bank.Module
             {
                 if (value >= 3)
                     IsBlicked = true;
-         
+
                 WrongField_ = value;
             }
         }
-        
-        public void ClientInfoPrint() 
+
+        public void ClientInfoPrint()
         {
             Console.WriteLine("{0}\n {1}\n {2}\n {3}\n {4}\n {5}\n", FullName, IIN, Login, Password, PhoneNumber, DoB);
         }
@@ -86,13 +86,13 @@ namespace KKB.Bank.Module
             Console.WriteLine("----------------------------------------------------");
             foreach (Account item in ListAccount)
             {
-                Console.WriteLine("AccountNumber: {0} ",item.AccountNumber);
-                Console.WriteLine("Balans: {0} ",item.Balance);
+                Console.WriteLine("AccountNumber: {0} ", item.AccountNumber);
+                Console.WriteLine("Balans: {0} ", item.Balance);
                 Console.WriteLine("CloseDate: {0} ", item.CloseDate);
                 Console.WriteLine("----------------------------------------------------");
                 sum += item.Balance;
             }
-            Console.WriteLine("ИТОГО: {0}", sum);
+            Console.WriteLine("ИТОГО: {0:n0}", sum);
         }
 
     }

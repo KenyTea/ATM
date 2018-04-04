@@ -39,15 +39,6 @@ namespace Bankomat
                         break;
                 }
 
-
-                //Console.Clear();
-
-                //Console.WriteLine("Menu");
-                //Console.WriteLine("Inter login");
-                //Login = Console.ReadLine(); ;
-                //Console.WriteLine("Inter Password");
-                //Password = Console.ReadLine();
-
                 if (Login == client.Login && Password == client.Password)
                 {
                     if (client.IsBlicked)
@@ -60,11 +51,13 @@ namespace Bankomat
                         Console.Clear();
                         Console.WriteLine(" 1 - Список счетов");
                         Console.WriteLine(" 2 - Создать счет");
+                        Console.WriteLine(" 3 - Пополнить счет");
+                        Console.WriteLine(" 6 - Выход");
 
                         int menu = 0;
                         Int32.TryParse(Console.ReadLine(), out menu);
 
-                        if (menu > 2 || menu < 1)
+                        if (menu > 6 || menu < 1)
                         {
                             throw new Exception("Invalid choice");
                         }
@@ -78,7 +71,21 @@ namespace Bankomat
                                         client.PrintAccountInfo();
                                     }
                                     break;
-                                case 2: { Console.Clear(); } break;
+                                case 2: { Console.Clear();
+                                       Account acc =  Servise.createAccount();
+                                        client.ListAccount.Add(acc);
+                                        Console.WriteLine("Счёт добавлен успешно!");
+
+                                    } break;
+                                case 3: {
+                                        Console.WriteLine("Введите номер счёта: KZ ");
+                                        string AccountNumber =  Console.ReadLine();
+                                        Console.WriteLine("Введите сумму: ");
+                                        string Summ = Console.ReadLine();
+                                        
+
+                                    } break;
+                                case 6:  return;
                             }
                         }
                         #endregion

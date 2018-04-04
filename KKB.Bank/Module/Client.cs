@@ -27,8 +27,8 @@ namespace KKB.Bank.Module
 </font></b></center>*/
                 FullName_ = value
                     .Replace("<center><b><font size=7>", "")
-                    .Replace("</font></b></center>", "")
-                    .Replace("", "");
+                    .Replace("</font></b></center>", "");
+                   
 
             }
         }
@@ -60,6 +60,18 @@ namespace KKB.Bank.Module
         public void ClientInfoPrint()
         {
             Console.WriteLine("{0}\n {1}\n {2}\n {3}\n {4}\n {5}\n", FullName, IIN, Login, Password, PhoneNumber, DoB);
+        }
+
+        public void PrintAccountInfo()
+        {
+            foreach (Account item in ListAccount)
+            {
+                Console.WriteLine("---------------------");
+                Console.WriteLine("AccountNumber: {0}: ",item.AccountNumber);
+                Console.WriteLine("Balans: {0}: ",item.Balance);
+                Console.WriteLine("CloseDate: {0}: ", item.CloseDate);
+                Console.WriteLine("---------------------");
+            }
         }
 
     }

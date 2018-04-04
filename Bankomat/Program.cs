@@ -12,6 +12,60 @@ namespace Bankomat
     {
         static void Main(string[] args)
         {
+            try
+            {
+                Console.WriteLine("Menu");
+                Console.WriteLine("Inter login");
+                string Login1 = Console.ReadLine(); ;
+                Console.WriteLine("Inter Password");
+                string Password1 = Console.ReadLine();
+
+                if(Login1 == "admin" && Password1 == "admin")
+                {
+
+
+                    Client client = new Client();
+                    Servise.createClient(ref client);
+
+                    client.Login = "admin";
+                    client.Password = "admin";
+
+                    Console.Clear();
+                    Console.WriteLine(" 1 - Список счетов");
+                    Console.WriteLine(" 2 - Создать счет");
+
+                    int menu = 0;
+                    Int32.TryParse(Console.ReadLine(), out menu);
+
+                    if (menu > 2 || menu < 1)
+                    {
+                        throw new Exception("Invalid choice");
+                    }
+                    else
+                    {
+                        switch (menu)
+                        {
+                            case 1: { Console.Clear();
+                                   
+
+
+                                } break;
+                            case 2: { Console.Clear(); } break;
+                        }
+                    }
+                }
+                else
+                {
+                    throw new Exception("Invalid login or password");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
+
             List<Client> ListClient = new List<Client>();
 
             GeneratorName.Generator g= new Generator();

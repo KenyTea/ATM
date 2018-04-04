@@ -55,7 +55,7 @@ namespace KKB.Bank.Module
         public string Login { get; set; }
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
-        List<Account> ListAccount;
+        public List<Account> ListAccount;
 
         public void ClientInfoPrint()
         {
@@ -66,11 +66,11 @@ namespace KKB.Bank.Module
         {
             foreach (Account item in ListAccount)
             {
-                Console.WriteLine("---------------------");
-                Console.WriteLine("AccountNumber: {0}: ",item.AccountNumber);
-                Console.WriteLine("Balans: {0}: ",item.Balance);
-                Console.WriteLine("CloseDate: {0}: ", item.CloseDate);
-                Console.WriteLine("---------------------");
+                Console.WriteLine("----------------------------------------------------");
+                Console.WriteLine("AccountNumber: {0} ",item.AccountNumber);
+                Console.WriteLine("Balans: {0} ",item.Balance);
+                Console.WriteLine("CloseDate: {0} ", item.CloseDate);
+                Console.WriteLine("----------------------------------------------------");
             }
         }
 

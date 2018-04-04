@@ -46,7 +46,7 @@ namespace Bankomat
                         switch (menu)
                         {
                             case 1: { Console.Clear();
-                                   
+                                    client.PrintAccountInfo();
 
 
                                 } break;

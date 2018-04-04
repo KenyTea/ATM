@@ -64,14 +64,18 @@ namespace KKB.Bank.Module
 
         public void PrintAccountInfo()
         {
+            double sum = 0;
+            Console.WriteLine("Спиок счетов: ");
+            Console.WriteLine("----------------------------------------------------");
             foreach (Account item in ListAccount)
             {
-                Console.WriteLine("----------------------------------------------------");
                 Console.WriteLine("AccountNumber: {0} ",item.AccountNumber);
                 Console.WriteLine("Balans: {0} ",item.Balance);
                 Console.WriteLine("CloseDate: {0} ", item.CloseDate);
                 Console.WriteLine("----------------------------------------------------");
+                sum += item.Balance;
             }
+            Console.WriteLine("ИТОГО: {0}", sum);
         }
 
     }

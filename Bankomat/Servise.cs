@@ -30,7 +30,7 @@ namespace Bankomat
             Account acc = new Account();
             acc.AccountNumber = "KZ" + ran.Next(100000000, 1000000000);
             acc.Balance = ran.Next(10000 , 10000000);
-            acc.CreateDate = DateTime.Now.AddMinutes(-ran.Next());
+            acc.CreateDate = DateTime.Now.AddMinutes(-ran.Next(1,56));
 
             return acc;
 

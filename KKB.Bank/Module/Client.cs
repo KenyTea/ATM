@@ -47,6 +47,7 @@ namespace KKB.Bank.Module
                 }
                 else
                 {
+                    
                     throw new Exception("Некорректно введён ИИН");
                 }
             }
@@ -56,8 +57,24 @@ namespace KKB.Bank.Module
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
         public List<Account> ListAccount;
-
-        public void ClientInfoPrint()
+        private int WrongField_;
+        public bool IsBlicked { get; set; }
+        public int WrongField
+        {
+            get
+            {
+                return WrongField_;
+            }
+            set
+            {
+                if (value >= 3)
+                    IsBlicked = true;
+         
+                WrongField_ = value;
+            }
+        }
+        
+        public void ClientInfoPrint() 
         {
             Console.WriteLine("{0}\n {1}\n {2}\n {3}\n {4}\n {5}\n", FullName, IIN, Login, Password, PhoneNumber, DoB);
         }

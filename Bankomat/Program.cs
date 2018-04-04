@@ -12,76 +12,105 @@ namespace Bankomat
     {
         static void Main(string[] args)
         {
+            string Login = " ";
+            string Password = " ";
+
             try
             {
-                Console.WriteLine("Menu");
-                Console.WriteLine("Inter login");
-                string Login1 = Console.ReadLine(); ;
-                Console.WriteLine("Inter Password");
-                string Password1 = Console.ReadLine();
+                Client client = new Client();
+                Servise.createClient(ref client);
 
-                if(Login1 == "admin" && Password1 == "admin")
+                client.Login = "admin";
+                client.Password = "admin";
+
+                while (!client.IsBlicked)
                 {
-
-
-                    Client client = new Client();
-                    Servise.createClient(ref client);
-
-                    client.Login = "admin";
-                    client.Password = "admin";
-
                     Console.Clear();
-                    Console.WriteLine(" 1 - Список счетов");
-                    Console.WriteLine(" 2 - Создать счет");
 
-                    int menu = 0;
-                    Int32.TryParse(Console.ReadLine(), out menu);
+                    Console.WriteLine("Menu");
+                    Console.WriteLine("Inter login");
+                    Login = Console.ReadLine(); ;
+                    Console.WriteLine("Inter Password");
+                    Password = Console.ReadLine();
 
-                    if (menu > 2 || menu < 1)
+                    if (Login != client.Login && Password != client.Password)
+                        client.WrongField++;
+                    else
+                        break;
+                }
+
+
+                //Console.Clear();
+
+                //Console.WriteLine("Menu");
+                //Console.WriteLine("Inter login");
+                //Login = Console.ReadLine(); ;
+                //Console.WriteLine("Inter Password");
+                //Password = Console.ReadLine();
+
+                if (Login == client.Login && Password == client.Password)
+                {
+                    if (client.IsBlicked)
                     {
-                        throw new Exception("Invalid choice");
+                        Console.WriteLine("You arr blocked");
                     }
                     else
                     {
-                        switch (menu)
+                        #region r
+                        Console.Clear();
+                        Console.WriteLine(" 1 - Список счетов");
+                        Console.WriteLine(" 2 - Создать счет");
+
+                        int menu = 0;
+                        Int32.TryParse(Console.ReadLine(), out menu);
+
+                        if (menu > 2 || menu < 1)
                         {
-                            case 1: { Console.Clear();
-                                    client.PrintAccountInfo();
-
-
-                                } break;
-                            case 2: { Console.Clear(); } break;
+                            throw new Exception("Invalid choice");
                         }
+                        else
+                        {
+                            switch (menu)
+                            {
+                                case 1:
+                                    {
+                                        Console.Clear();
+                                        client.PrintAccountInfo();
+                                    }
+                                    break;
+                                case 2: { Console.Clear(); } break;
+                            }
+                        }
+                        #endregion
                     }
                 }
                 else
-                {
-                    throw new Exception("Invalid login or password");
-                }
+                    Console.WriteLine("You arr blocked");
+
             }
             catch (Exception)
             {
 
                 throw;
             }
-           
 
-            //List<Client> ListClient = new List<Client>();
-
-            //GeneratorName.Generator g= new Generator();
-
-            //Client c1 = new Client();
-
-            //c1.DoB = DateTime.Now.AddYears(-60);
-            //c1.FullName = g.GenerateDefault(Gender.man);
-            //c1.IIN = "970131301448";
-            //c1.Login = "Qwe";
-            //c1.Password = "123";
-            //c1.PhoneNumber = "87475458546";
-
-            //ListClient.Add(c1);
-
-            //c1.ClientInfoPrint();
         }
+        //List<Client> ListClient = new List<Client>();
+
+        //GeneratorName.Generator g= new Generator();
+
+        //Client c1 = new Client();
+
+        //c1.DoB = DateTime.Now.AddYears(-60);
+        //c1.FullName = g.GenerateDefault(Gender.man);
+        //c1.IIN = "970131301448";
+        //c1.Login = "Qwe";
+        //c1.Password = "123";
+        //c1.PhoneNumber = "87475458546";
+
+        //ListClient.Add(c1);
+
+        //c1.ClientInfoPrint();
     }
 }
+

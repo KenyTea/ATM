@@ -71,21 +71,61 @@ namespace Bankomat
                                         client.PrintAccountInfo();
                                     }
                                     break;
-                                case 2: { Console.Clear();
-                                       Account acc =  Servise.createAccount();
+                                case 2:
+                                    {
+                                        Console.Clear();
+                                        Account acc = Servise.createAccount();
                                         client.ListAccount.Add(acc);
                                         Console.WriteLine("Счёт добавлен успешно!");
-
-                                    } break;
-                                case 3: {
-                                        Console.WriteLine("Введите номер счёта: KZ ");
-                                        string AccountNumber =  Console.ReadLine();
+                                    }
+                                    break;
+                                case 3:
+                                    {
+                                        Console.WriteLine(" KZ ");
+                                        string AccountNumber = Console.ReadLine();
                                         Console.WriteLine("Введите сумму: ");
                                         string Summ = Console.ReadLine();
+                                    }
+                                    break;
+                                case 4:
+                                    {
+                                        Console.WriteLine("Введите номер счёта: ");
+                                        string accountNumber = Console.ReadLine();
+                                        Console.WriteLine("Веедите сумму ");
+                                        string accountSum = Console.ReadLine();
+                                        try
+                                        {
+                                            foreach (var item in client.ListAccount)
+                                            {
+                                                if (item.AccountNumber == accountNumber)
+                                                {
+                                                    if (double.Parse(accountSum) > item.Balance)
+                                                    {
+                                                        Console.WriteLine("Ошибка! Нет такой суммы на счету");
+                                                    }
+                                                    else
+                                                    {
+                                                        item.Balance -= double.Parse(accountSum);
+                                                        Console.WriteLine("Сумма {0} успешна переведена на счёт {1}", accountSum, accountNumber);
                                         
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.WriteLine(ex.Message);
+                                        }
 
-                                    } break;
-                                case 6:  return;
+                                        int choice = 0;
+                                        Console.WriteLine("Введите число для продолжения или 0 для выхода ");
+                                        Int32.TryParse(Console.ReadLine(), out choice);
+                                        if (choice == 0)
+                                            return;
+                                        else
+                                            break;
+                                    }
+                                case 6: return;
                             }
                         }
                         #endregion

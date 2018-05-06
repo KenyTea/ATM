@@ -22,9 +22,7 @@ namespace KKB.Bank.Module
             }
             set
             {
-                /*?<center><b><font size=7>Игнат
- Голованов
-</font></b></center>*/
+                /*?<center><b><font size=7>Игнат Голованов </font></b></center>*/
                 FullName_ = value
                     .Replace("<center><b><font size=7>", "")
                     .Replace("</font></b></center>", "");
